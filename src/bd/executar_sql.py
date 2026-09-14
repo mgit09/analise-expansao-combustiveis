@@ -54,10 +54,11 @@ def executar_queries_sql():
 
         caminho_saida = DADOS_MODELADOS / f"{tabela}.csv"
 
+        # ATENÇÃO: DELIMITADOR ALTERADO PARA ',' POR CONTA DO DATA STUDIO
         conexao.execute(f"""
             COPY {tabela}
             TO '{caminho_saida}'
-            (HEADER, DELIMITER ';');
+            (HEADER, DELIMITER ',');
         """)
 
         log(

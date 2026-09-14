@@ -18,7 +18,8 @@ def diagnosticar_csv(arquivo: Path) -> None:
 
     log(f"ARQUIVO: {arquivo.name}\n", separador_interno_antes=True)
     try:
-        df = ler_csv(arquivo)
+        # ATENÇÃO: DELIMITADOR ALTERADO PARA ',' POR CONTA DO DATA STUDIO
+        df = ler_csv(arquivo, separador=",")
 
     except Exception as e:
         log(
