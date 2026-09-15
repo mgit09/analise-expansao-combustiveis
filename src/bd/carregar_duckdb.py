@@ -9,6 +9,8 @@ from configs.caminhos import (
     ARQUIVO_CONSOLIDADO_FROTA,
     ARQUIVO_CONSOLIDADO_DADOS_ECONOMICOS,
     ARQUIVO_CONSOLIDADO_COORD,
+    ARQUIVO_BASES_LOGISTICAS,
+    ARQUIVO_REFINARIAS,
 )
 
 
@@ -19,6 +21,8 @@ TABELAS = {
     "frota_senatran"         : ARQUIVO_CONSOLIDADO_FROTA,
     "dados_economicos"       : ARQUIVO_CONSOLIDADO_DADOS_ECONOMICOS,
     "coordenadas_municipios" : ARQUIVO_CONSOLIDADO_COORD,
+    "bases_logisticas"       : ARQUIVO_BASES_LOGISTICAS,
+    "refinarias"             : ARQUIVO_REFINARIAS,
 }
 
 
