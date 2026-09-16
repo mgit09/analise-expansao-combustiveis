@@ -31,6 +31,14 @@ SELECT
 FROM 
     metricas_crescimento_vendas v
 
+-- Utiliza municipios para acessar os IDs de UFs
+INNER JOIN municipios m
+    ON s.id_municipio = m.id_municipio
+
+-- Mantém apenas os municípios dos estados de escopo
+INNER JOIN ufs_escopo u
+    ON m.id_uf = u.id_uf
+
 LEFT JOIN metricas_crescimento_frota f
     ON v.id_municipio = f.id_municipio
 

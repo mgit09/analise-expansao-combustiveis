@@ -1,23 +1,23 @@
-id_municipio;nome_municipio;atendido
-3106200;Belo Horizonte;1
-3118601;Contagem;1
-3106705;Betim;1
-3140704;Mateus Leme;1
-3154606;Ribeirão das Neves;1
-3136652;Juatuba;1
-3147105;Pará de Minas;1
-3130200;Igaratinga;1
-3132206;Itaguara;1
-3114501;Carmópolis de Minas;1
-3145604;Oliveira;1
-3133709;Itatiaiuçu;1
-3133808;Itaúna;1
-3122306;Divinópolis;1
-3161809;São Gonçalo do Pará;1
-3145208;Nova Serrana;1
-3138203;Lavras;1
-3159902;Santo Antônio do Amparo;1
-3149903;Perdões;1
-3169307;Três Corações;1
-3113909;Carmo da Cachoeira;1
-3170701;Varginha;1
+id_municipio;nome_municipio
+3106200;Belo Horizonte
+3118601;Contagem
+3106705;Betim
+3140704;Mateus Leme
+3154606;Ribeirão das Neves
+3136652;Juatuba
+3147105;Pará de Minas
+3130200;Igaratinga
+3132206;Itaguara
+3114501;Carmópolis de Minas
+3145604;Oliveira
+3133709;Itatiaiuçu
+3133808;Itaúna
+3122306;Divinópolis
+3161809;São Gonçalo do Pará
+3145208;Nova Serrana
+3138203;Lavras
+3159902;Santo Antônio do Amparo
+3149903;Perdões
+3169307;Três Corações
+3113909;Carmo da Cachoeira
+3170701;Varginha

@@ -46,6 +46,14 @@ SELECT
 FROM 
     scores s 
 
+-- Utiliza municipios para acessar os IDs de UFs
+INNER JOIN municipios m
+    ON s.id_municipio = m.id_municipio
+
+-- Mantém apenas os municípios dos estados de escopo
+INNER JOIN ufs_escopo u
+    ON m.id_uf = u.id_uf
+
 LEFT JOIN metricas_vendas v 
     ON s.id_municipio = v.id_municipio 
     AND s.ano = v.ano 

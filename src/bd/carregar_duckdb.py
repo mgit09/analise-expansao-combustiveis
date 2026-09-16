@@ -11,6 +11,7 @@ from configs.caminhos import (
     ARQUIVO_CONSOLIDADO_COORD,
     ARQUIVO_BASES_LOGISTICAS,
     ARQUIVO_REFINARIAS,
+    ARQUIVO_UFS_ESCOPO,
 )
 
 
@@ -23,6 +24,7 @@ TABELAS = {
     "coordenadas_municipios" : ARQUIVO_CONSOLIDADO_COORD,
     "bases_logisticas"       : ARQUIVO_BASES_LOGISTICAS,
     "refinarias"             : ARQUIVO_REFINARIAS,
+    "ufs_escopo"             : ARQUIVO_UFS_ESCOPO,
 }
 
 
