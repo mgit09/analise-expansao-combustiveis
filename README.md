@@ -4,15 +4,15 @@
 
 Este projeto simula o cenário de uma distribuidora de combustíveis (fictícia) regional, de médio-grande porte, com atuação consolidada em Minas Gerais.
 
-A empresa opera com duas bases de distribuição:
+A empresa opera com duas bases logísticas de distribuição:
 
 - Base principal em Betim (MG), abastecida pela Refinaria Gabriel Passos (REGAP)
-- Base secundária em Oliveira (MG), com função de suporte logístico e redução do raio de atendimento
+- Base secundária em Oliveira (MG), também abastecida pela REGAP
 
 A operação é estruturada ao longo de um eixo logístico principal, utilizando as rodovias BR-381 e BR-262 como corredores de distribuição.
 
 O modelo operacional segue o fluxo:
-`Refinaria → Base de distribuição → Postos atendidos`
+`Refinaria → Base de distribuição → Postos nos municípios atendidos`
 
 ## Área de Atuação Atual
 
@@ -38,77 +38,46 @@ Além disso, a empresa atende postos localizados ao longo das rodovias BR-381 e 
 
 ## Problema de Negócio
 
-Com a expansão da área de atuação, a empresa enfrenta aumento da distância média de entrega, elevando os custos logísticos.
+A empresa busca ampliar sua área de atuação a partir das bases logísticas existentes em **Betim** e **Oliveira**.
 
-O problema central é:
+O objetivo da análise é identificar **quais novos mercados apresentam maior potencial de expansão considerando a capacidade logística atual da empresa**.
 
-**"Como expandir a malha de distribuição maximizando a cobertura de demanda e minimizando os custos logísticos?"**
+A análise busca responder:
 
-## Estrutura do Problema
-
-A decisão de expansão envolve três dimensões:
-
-- Seleção de novos mercados (municípios/regiões)
-- Viabilidade logística a partir das bases existentes
-- Avaliação da necessidade de criação de uma nova base ou polo logístico
-
----
+- Quais municípios apresentam maior potencial de mercado?
+- Quais desses municípios são logisticamente acessíveis a partir das bases atuais?
+- Quais regiões e eixos de expansão concentram as melhores oportunidades?
+- Até onde a estrutura atual permite expandir a atuação de forma adequada?
 
 ## Hipóteses de Expansão
 
-O projeto considera três caminhos estratégicos:
+Para delimitar o universo de mercados analisados, a empresa considera quatro eixos rodoviários como possíveis direções de expansão.
 
-### Hipótese 1 — Expansão contínua no eixo atual (REGAP)
+Os eixos representam regiões nas quais a empresa pretende avaliar a existência de novos mercados, considerando tanto o potencial dos municípios quanto sua conexão logística com as bases atuais.
 
-- Manutenção do modelo atual (Betim + Oliveira)
-- Expansão ao longo da BR-381 (sentido sul de Minas)
-- Avanço para municípios no entorno
-- Criação de uma nova base no sul de Minas, atendido via base de Oliveira
+### Hipótese 1 — Expansão Oeste
 
-### Hipótese 2 — Criação de novo polo logístico (REPLAN)
+**Eixo principal: BR-262**
 
-- Implantação de uma nova base conectada à Refinaria de Paulínia (REPLAN) em SP
-- Formação de um segundo eixo logístico independente
-- Possibilidade de atendimento eficiente ao Sul de MG e interior de SP (região de Campinas)
+Avaliação de municípios conectados ao corredor da BR-262 e às principais rodovias de acesso, em direção ao oeste de Minas Gerais.
 
-### Hipótese 3 — Expansão alternativa dentro de Minas Gerais
+### Hipótese 2 — Expansão Sudoeste
 
-- Avaliação de expansão para outras regiões do estado (Ex: oeste ou norte de Minas)
-- Comparação de atratividade vs custo logístico
+**Eixo principal: BR-381**
 
----
+Avaliação de municípios conectados ao corredor da BR-381, em direção ao Sul de Minas e, potencialmente, ao estado de São Paulo.
 
-## Abordagem Analítica
+### Hipótese 3 — Expansão Sudeste
 
-A análise será estruturada em três etapas, considerando dados no período de 2015 a 2025:
+**Eixo principal: BR-499**
 
-### 1. Potencial de Demanda
+Avaliação de municípios conectados ao eixo da BR-499 e às rodovias de acesso ao sudeste de Minas Gerais.
 
-Identificação de mercados prioritários com base em:
+### Hipótese 4 — Expansão Noroeste
 
-- Frota de veículos (SENATRAN)
-- PIB municipal (IBGE)
-- Vendas de combustíveis (ANP)
+**Eixo principal: BR-040**
 
-### 2. Viabilidade Logística
-
-Avaliação da capacidade de atendimento considerando:
-
-- Distância entre bases e municípios
-- Eixos rodoviários (BR-381, BR-262)
-- Tempo estimado de deslocamento
-
-### 3. Trade-off Custo vs Cobertura
-
-Análise do equilíbrio entre:
-
-- Expansão da área atendida
-- Aumento do custo logístico
-
-Objetivos:
-
-- Identificar o limite eficiente de expansão com a estrutura atual
-- Avaliar o ponto em que uma nova base se torna viável
+Avaliação de municípios conectados ao corredor da BR-040 e às regiões atendidas por seus principais acessos.
 
 ---
 
@@ -150,9 +119,10 @@ A partir das métricas, são calculados três scores dimensionais:
 
 - `Score de Demanda`: Mede o potencial de consumo e intensidade de mercado.
 - `Score Econômico`: Avalia a qualificação econômica dos municípios com base em renda e perfil produtivo.
-- `Score Logístico`: Representa a eficiência operacional considerando a distância até a base de atendimento.
+- `Score Logístico`: Representa a acessibilidade do município a partir da estrutura atual, considerando a distância até a base de atendimento.
 
-Os scores são posteriormente consolidados em um `Score Final` de atratividade do município, para apoiar a decisão de expansão.
+Os scores são posteriormente consolidados em:
+- `Score Final`: Atratividade do município para expansão a partir da estrutura atual.
 
 ---
 
@@ -186,24 +156,23 @@ analise-expansao-combustiveis/
 ## Pipeline de Dados
 
 1. Coleta de dados:
-
    - Frota (SENATRAN)
    - PIB municipal (IBGE)
    - Vendas e preços (ANP)
    - Coordenadas dos municípios (Rep. Github)
-2. Tratamento (Python):
 
+2. Tratamento (Python):
    - Limpeza e padronização
    - Consolidação de séries históricas
-3. Modelagem Analítica (SQL | DuckDB):
 
+3. Modelagem Analítica (SQL | DuckDB):
    - Criação de métricas derivadas
    - Construção de scores dimensionais
    - Consolidação das tabelas analíticas
-4. Análise e Visualização:
 
+4. Análise e Visualização:
    - Exploração dos resultados
-   - Mapas e indicadores no Power BI
+   - Mapas e indicadores no Data Studio
    - Avaliação de cenários de expansão
 
 ## Ferramentas Utilizadas
@@ -211,7 +180,7 @@ analise-expansao-combustiveis/
 - SQL
 - Duck DB
 - Python (Pandas)
-- Power BI
+- Looker Studio (Data Studio)
 
 ---
 
@@ -240,3 +209,16 @@ pip install -r requirements.txt
 
 - Dados de PIB disponíveis até 2023 (anos posteriores tratados como ausência ou proxy)
 - PIB a preços correntes (não ajustado pela inflação)
+
+## Possíveis Extensões
+
+Uma evolução natural do projeto seria avaliar a expansão da própria estrutura logística.
+
+Caso os resultados indiquem mercados relevantes além do alcance das bases atuais, uma etapa posterior poderia investigar a implantação de uma **nova base de distribuição**, considerando:
+
+- localização estratégica em relação aos mercados potenciais;
+- proximidade e acesso aos principais eixos rodoviários;
+- área potencial de atendimento;
+- alternativas de abastecimento pela **REGAP** e **REPLAN**.
+
+Essa extensão permitiria evoluir a análise de uma decisão de **expansão a partir da rede atual** para uma decisão de **expansão da própria rede logística**.
