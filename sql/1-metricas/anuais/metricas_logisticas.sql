@@ -117,8 +117,6 @@ WITH
 
         INNER JOIN municipios_atendidos a
             ON d.id_municipio = a.id_municipio
-        
-        WHERE a.atendido = TRUE
     ),
     ---------------------------------------------------------------------
     dist_referencia AS (
@@ -157,6 +155,7 @@ SELECT
             THEN r.nome_refinaria_regap
         ELSE r.nome_refinaria_replan
     END AS refinaria_mais_proxima
+
 
 FROM dist_municipio_base d
 

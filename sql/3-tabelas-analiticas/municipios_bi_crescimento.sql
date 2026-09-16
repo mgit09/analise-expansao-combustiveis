@@ -33,7 +33,7 @@ FROM
 
 -- Utiliza municipios para acessar os IDs de UFs
 INNER JOIN municipios m
-    ON s.id_municipio = m.id_municipio
+    ON v.id_municipio = m.id_municipio
 
 -- Mantém apenas os municípios dos estados de escopo
 INNER JOIN ufs_escopo u

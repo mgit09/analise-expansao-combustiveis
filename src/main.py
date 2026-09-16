@@ -26,7 +26,7 @@ def main():
         ("Pipeline de limpeza [frota]", executar_ppl_frota),
         ("Pipeline de limpeza [dados econômicos]", executar_ppl_dados_economicos),
         ("Pipeline de limpeza [vendas]", executar_ppl_vendas),
-        ("Pipeline do banco de dados", carregar_bd),
+        ("Banco de dados", carregar_bd),
         ("Queries SQL", executar_queries_sql),
     ]
 
